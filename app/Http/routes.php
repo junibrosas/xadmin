@@ -40,9 +40,3 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin
 get('file-upload', function(){
     event(new FileWasUploaded('Hello Jayde!'));
 });
-
-
-get('test', function(){
-        
-    _trace($tagGroup);
-});

@@ -26,7 +26,8 @@
             "App\\": "app/"
         },
         "files": [
-            "app/Acme/Helpers/Helpers.php"
+            "app/Acme/Helpers/Helpers.php",
+            "CMS/Helpers/PostHelper.php"
         ]
     },
     "autoload-dev": {

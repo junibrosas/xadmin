@@ -39,8 +39,8 @@
 	                </tbody>
 	            </table>
 			@else
-				<div class="text-center">
-					<b>No files available</b>	
+				<div class="not-available text-center">
+					No files available
 				</div> 
 			@endif
 		</div>

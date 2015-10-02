@@ -19,9 +19,9 @@ class PostController extends Controller
      */
     public function index()
     {
-
-
-        return view('admin.pages.posts');
+        $data['posts'] = Post::get();
+        
+        return view('admin.pages.posts', $data);
     }
 
     /**
@@ -31,12 +31,8 @@ class PostController extends Controller
      */
     public function create( Request $request )
     {
-        $post = Post::find(\Input::get('post'));
-        if(!isset($post->id))
-            $post = new Post();    
-        
-        $data['post'] = $post;
-        return view('admin.pages.post-create', $data);
+        $post = new Post();
+        return view('admin.pages.post', compact('post'));
     }
 
     /**
@@ -45,17 +41,20 @@ class PostController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store( Request $request )
     {
         // Save new post
         $post = Post::savePost( $request );
+        
+        $post->post_type = 'post';
+        $post->save();
 
         // Save new tags
         PostTag::saveTags( $request->get('tags'), $post );
 
-        instaFlash('Successfully Published!', 'Yes! your post is published!');
+        //instaFlash('Successfully Published!', 'Yes! your post is published!');
 
-        return redirect()->route('admin.posts.create', ['post' => $post->id]);
+        return redirect()->route('admin.posts.edit', $post->id)->withInput();
     }
 
     /**
@@ -77,7 +76,13 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        if(!isset($post->id))
+            $post = new Post();    
+        
+        $data['post'] = $post;
+
+        return view('admin.pages.post', compact('post'));
     }
 
     /**
@@ -89,7 +94,16 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Find post
+        $post = Post::find($id);
+
+        // Save new post
+        $post = Post::savePost( $request, $post );
+
+        // Save new tags
+        PostTag::saveTags( $request->get('tags'), $post );
+
+        return redirect()->back()->withInput();
     }
 
     /**
@@ -100,7 +114,13 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
+        $post = Post::find($id);
 
+        if ($post && $post->delete) {
+            return redirect()->back()->with('message', 'Deleted Successfully.' );
+        }
+
+        return redirect()->back()->with('message', 'Unable to delete.' );
     }
 
 }
