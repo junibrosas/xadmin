@@ -1,4 +1,3 @@
-
 <table class="table table-striped table-vcenter">
     <thead>
         <tr>

@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace Xadmin\Features\CMS\Controllers;
 
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\FileMedia;
-use File;
 
-class FileController extends Controller
+class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +16,7 @@ class FileController extends Controller
      */
     public function index()
     {
-        $data['files'] = FileMedia::orderBy('created_at', 'DESC')->get();
-
-        return view('admin.pages.files', $data);
+        return view('cms::menu.menu');
     }
 
     /**
@@ -41,15 +37,7 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        $file = FileMedia::upload($request->file('file'));
-
-        FileMedia::create([
-            'filename' => $file->name,
-            'mime_type' => $file->getClientMimeType(),
-            'size' => $file->getClientSize()
-        ]);
-
-        return $file;
+        //
     }
 
     /**
@@ -94,11 +82,6 @@ class FileController extends Controller
      */
     public function destroy($id)
     {
-        $fileMedia = FileMedia::findOrFail($id);
-        $fileMedia->delete();
-
-        File::delete( config('admin.fileUploadDirectory').$fileMedia->filename );
-
-        return redirect()->back();
+        //
     }
 }

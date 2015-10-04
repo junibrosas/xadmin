@@ -24,22 +24,22 @@
 		<div class="col-md-8">
 			<div class="row">
 				<div class="col-md-6">
-					@include('admin.snippets.menu-table')
+					@include('cms::snippets.table-menu')
 				</div>
 				<div class="col-md-6">
-					@include('admin.snippets.menu-table')
+					@include('cms::snippets.table-menu')
 				</div>
 				<div class="col-md-6">
-					@include('admin.snippets.menu-table')
+					@include('cms::snippets.table-menu')
 				</div>
 				<div class="col-md-6">
-					@include('admin.snippets.menu-table')
+					@include('cms::snippets.table-menu')
 				</div>
 				<div class="col-md-6">
-					@include('admin.snippets.menu-table')
+					@include('cms::snippets.table-menu')
 				</div>
 				<div class="col-md-6">
-					@include('admin.snippets.menu-table')
+					@include('cms::snippets.table-menu')
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Xadmin\Features\CMS\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;

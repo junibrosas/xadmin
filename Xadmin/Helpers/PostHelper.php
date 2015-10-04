@@ -2,9 +2,9 @@
 if ( ! function_exists('_postStickTags'))
 {
      // Return set of post tags separated by comma
-    function _postStickTags( \App\Post $post )
+    function _postStickTags( \Xadmin\Features\CMS\Models\Post $post )
     {
-        $postTags = \App\PostTag::postTags( $post );
+        $postTags = \Xadmin\Features\CMS\Models\PostTag::postTags( $post );
 
         if(count($postTags) <= 0) return;
 

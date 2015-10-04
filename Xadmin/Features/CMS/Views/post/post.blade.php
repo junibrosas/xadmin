@@ -1,6 +1,5 @@
 @extends('admin.layouts.default')
 
-
 @section('content')
     @if($post->id)
         <form class="form-horizontal push-10-t" action="{{ route('admin.posts.update', $post->id) }}" method="POST">

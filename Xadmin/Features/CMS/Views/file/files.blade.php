@@ -4,7 +4,7 @@
 	<div class="block">
 	    <div class="block-content">
     		
-    		@include('admin.snippets.ui-dropzone')
+    		@include('cms::snippets.ui-dropzone')
 
 	    </div>
 	</div>

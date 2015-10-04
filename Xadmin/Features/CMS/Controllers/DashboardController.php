@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace Xadmin\Features\CMS\Controllers;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class MenuController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.menu');
+        return view('cms::dashboard');
     }
 
     /**

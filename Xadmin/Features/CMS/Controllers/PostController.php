@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace Xadmin\Features\CMS\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\PostRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Post;
-use App\PostTag;
+use Xadmin\Features\CMS\Models\Post;
+use Xadmin\Features\CMS\Models\PostTag;
 
-class PageController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +18,8 @@ class PageController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.pages');
+        $posts = Post::get();
+        return view('cms::post.posts', compact('posts'));
     }
 
     /**
@@ -27,10 +27,10 @@ class PageController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function create( Request $request )
     {
         $post = new Post();
-        return view('admin.pages.page', compact('post'));
+        return view('cms::post.post', compact('post'));
     }
 
     /**
@@ -39,12 +39,12 @@ class PageController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store( Request $request )
     {
         // Save new post
         $post = Post::savePost( $request );
         
-        $post->post_type = 'page';
+        $post->post_type = 'post';
         $post->save();
 
         // Save new tags
@@ -52,7 +52,7 @@ class PageController extends Controller
 
         //instaFlash('Successfully Published!', 'Yes! your post is published!');
 
-        return redirect()->route('admin.pages.edit', $post->id)->withInput();
+        return redirect()->route('admin.posts.edit', $post->id)->withInput();
     }
 
     /**
@@ -74,13 +74,13 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::find($id);
+        $post = Post::where('id',$id)->where('post_type', 'post')->first();
         if(!isset($post->id))
             $post = new Post();    
         
         $data['post'] = $post;
 
-        return view('admin.pages.page', compact('post'));
+        return view('cms::post.post', compact('post'));
     }
 
     /**
@@ -93,7 +93,7 @@ class PageController extends Controller
     public function update(Request $request, $id)
     {
         // Find post
-        $post = Post::find($id);
+        $post = Post::where('id',$id)->where('post_type', 'post')->first();
 
         // Save new post
         $post = Post::savePost( $request, $post );
@@ -112,7 +112,7 @@ class PageController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
+        $post = Post::where('id',$id)->where('post_type', 'post')->first();
 
         if ($post && $post->delete) {
             return redirect()->back()->with('message', 'Deleted Successfully.' );
@@ -120,4 +120,5 @@ class PageController extends Controller
 
         return redirect()->back()->with('message', 'Unable to delete.' );
     }
+
 }

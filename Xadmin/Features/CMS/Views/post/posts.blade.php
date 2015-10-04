@@ -45,7 +45,7 @@
 			<br><br>
 	        <div class="table-responsive">
 	            @if( count($posts) > 0 )
-	            	@include('admin.snippets.table-posts')
+	            	@include('cms::snippets.table-posts')
 	            @else
 	            	<div class="not-available">
 	            		No posts available

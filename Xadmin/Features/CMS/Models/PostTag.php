@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace Xadmin\Features\CMS\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Post;
-use App\PostTag;
-use App\Tag;
+use Xadmin\Features\CMS\Models\Post;
+use Xadmin\Features\CMS\Models\PostTag;
+use Xadmin\Features\CMS\Models\Tag;
 
 class PostTag extends Model
 {
@@ -13,7 +13,7 @@ class PostTag extends Model
     protected $fillable = ["post_id", "tag_id"];
 
     public function tag(){
-    	return $this->hasOne('\App\Tag', 'id', 'tag_id');
+    	return $this->hasOne('\Xadmin\Features\CMS\Models\Tag', 'id', 'tag_id');
     }
 
     public static function postTags(Post $post){
