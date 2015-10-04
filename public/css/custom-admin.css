@@ -5,3 +5,8 @@
 	min-height: 100% !important; 
 	height: 100% !important;
 }
+.not-available{
+	font-weight: bold;
+	text-align: center;
+	padding-bottom: 30px;
+}

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Xadmin\Features\CMS\Models;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Database\Eloquent\Model;
 

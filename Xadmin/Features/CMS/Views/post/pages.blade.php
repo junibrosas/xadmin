@@ -3,7 +3,7 @@
 @section('content')
 
 	<div class="text-right page-block-btns"> 
-		<a href="#" class="btn btn-primary btn-square"><i class="fa fa-plus"></i> Add New Post</a>
+		<a href="{{ route('admin.pages.create') }}" class="btn btn-primary btn-square"><i class="fa fa-plus"></i> Add New Post</a>
 	</div>
 	<div class="block">
 	    <div class="block-content">

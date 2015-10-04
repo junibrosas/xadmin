@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace Xadmin\Features\CMS\Controllers;
 
 use Illuminate\Http\Request;
 
@@ -16,7 +16,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.dashboard');
+        return view('cms::dashboard');
     }
 
     /**

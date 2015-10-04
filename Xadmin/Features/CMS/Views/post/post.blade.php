@@ -1,12 +1,21 @@
 @extends('admin.layouts.default')
 
-
 @section('content')
-    <form class="form-horizontal push-10-t" action="{{ route('admin.posts.store') }}" method="post">
+    @if($post->id)
+        <form class="form-horizontal push-10-t" action="{{ route('admin.posts.update', $post->id) }}" method="POST">
+        <input name="_method" type="hidden" value="PUT">
+    @else 
+        <form class="form-horizontal push-10-t" action="{{ route('admin.posts.store') }}" method="POST">
+    @endif
+    
         {!! csrf_field() !!}
-        <div class="text-right page-block-btns"> 
+        <div class="pull-left page-block-btns"> 
+            <a href="{{ route('admin.posts.index') }}" class="btn btn-primary btn-square"><i class="fa fa-list"></i> {{ trans('admin.posts.all') }}</a>
+        </div>
+        <div class="pull-right page-block-btns"> 
             <button type="submit" class="btn btn-primary btn-square"><i class="fa fa-floppy-o"></i> {{ trans('admin.posts.store') }}</a>
         </div>
+        <div class="clearfix"></div>
 
         <div class="row">
             <div class="col-lg-12">
@@ -21,7 +30,7 @@
                             <div class="col-sm-12">
                                 <div class="form-material">
                                     <label for="blog-title">Give your blog post a title.</label><br/>
-                                    <input class="form-control" type="text" id="blog-title" name="post_title" value="{{ $post->title }}">
+                                    <input class="form-control" type="text" id="blog-title" name="title" value="{{ $post->title }}" required="required">
                                 </div>
                             </div>
                         </div> 
@@ -38,7 +47,7 @@
                                     <div class="form-material">
                                         <!-- Summernote Container -->
                                         <label for="blog-content">Blog about anything and add your content.</label><br/>
-                                        <textarea id="content-area" name="post_content" class="js-summernote">
+                                        <textarea id="content-area" name="content" class="js-summernote" required="required">
                                             {!! $post->content !!}
                                         </textarea>
                                     </div>
@@ -60,8 +69,8 @@
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <div class="form-material">
-                                    <label for="blog-tags">Tags can be used to categorize your blog posts.</label><br/>
-                                    <input class="js-tags-input form-control" name="tags" type="text" id="blog-tags">
+                                    <label for="blog-tags">Tags can be used to categorize your blog posts. Separate tags by comma.</label><br/>
+                                    <input class="js-tags-input form-control" name="tags" value="{{ $post->id ? _postStickTags( $post ) : '' }}" type="text" id="blog-tags">
                                 </div>
                             </div>
                         </div>
@@ -80,8 +89,8 @@
                             <div class="form-group">
                                 <div class="col-lg-12">
                                     <div class="form-material">
-                                        <label for="blog-publishing-date">Set a specific publish date.</label>
-                                        <input class="js-datepicker form-control" type="text" id="blog-publishing-date" name="date_created" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd">
+                                        <label for="blog-publishing-date">Set a specific publish date. Leaving the field will automatically set the date now.</label>
+                                        <input class="js-datepicker form-control" type="text" id="blog-publishing-date" name="published_at" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value="{{ $post->id ? date('Y-m-d', strtotime($post->published_at)) : '' }}">
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +98,12 @@
                                 <div class="col-lg-12">
                                     <label for="post-visibility">Post Visibility</label><br/>
                                     <label class="css-input switch switch-sm switch-primary">
-                                        <input id="post-visibility" type="checkbox" name="visibility"checked><span></span> Hidden/Visible
+                                        <?php 
+                                        $isVisible = true;
+                                        if($post->id && $post->is_visible == false){
+                                            $isVisible = false;
+                                        } ?>
+                                        <input id="post-visibility" type="checkbox" name="is_visible" {{ $isVisible ? 'checked' : ''  }}><span></span> Hidden/Visible
                                     </label>
                                 </div>
                             </div>

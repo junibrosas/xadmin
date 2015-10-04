@@ -143,6 +143,11 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        
+        /*
+         * Xadmin Service Providers...
+         */
+        Xadmin\Providers\XadminServiceProvider::class,
 
         // Third Party Service Providers
         Caffeinated\Menus\MenusServiceProvider::class,

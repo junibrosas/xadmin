@@ -23,18 +23,26 @@ return [
         'index' => 'Files'
     ],
 
-    'posts'  => [   
-            'index' => 'Posts', 
-            'create' => 'Create Post',
-            'add' => 'Add New Post',
-            'store' => 'Save Post',
-            'editorHeader' => 'Editor',
-            'blog_title' => "Title",
-            "blog_content" => "Content"
-        ],
+    'posts'  => [ 
+        'all' => 'All Posts',  
+        'index' => 'Posts', 
+        'create' => 'Create Post',
+        'add' => 'Add New Post',
+        'edit' => 'Edit Blog Post',
+        'store' => 'Save Post',
+        'blog_title' => 'Post Title',
+        'blog_content' => 'Post Content'
+    ],
     
     'pages' => [
-        'index' => 'Pages'
+        'all' => 'All Pages',  
+        'index' => 'Pages',
+        'create' => 'Create Page',
+        'add' => 'Add New Page',
+        'edit' => 'Edit Page',
+        'store' => 'Save Page',
+        'blog_title' => 'Page Title',
+        'blog_content' => 'Page Content'
     ],
 
     'auth' => [
