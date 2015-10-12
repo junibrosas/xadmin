@@ -16,6 +16,11 @@ class FileMedia extends Model
         return asset( config('admin.fileUploadDirectory') . $this->filename);
     }
 
+    public function name(){
+        $name = explode('.', $this->filename);
+        if(isset($name[0])) return $name[0];
+    }
+
     public static function upload(UploadedFile $file)
     {
 		$fileMedia = new static;

@@ -59,11 +59,22 @@
 
 
         <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
-        <script src="{{ asset('js/oneui.min.js') }}"></script>
-        <script src="{{ asset('js/admin/custom-admin.js') }}"></script>
+        <script src="{{ asset('js/core/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/core/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/core/jquery.slimscroll.min.js') }}"></script>
+        <script src="{{ asset('js/core/jquery.scrollLock.min.js') }}"></script>
+        <script src="{{ asset('js/core/jquery.appear.min.js') }}"></script>
+        <script src="{{ asset('js/core/jquery.countTo.min.js') }}"></script>
+        <script src="{{ asset('js/core/jquery.placeholder.min.js') }}"></script>
+        <script src="{{ asset('js/core/js.cookie.min.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
+
         <script src="{{ asset('js/plugins/sweetalert/sweetalert.min.js') }}"></script>
         <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.12.14/vue.min.js"></script>
+        {{-- <script src="{{ asset('js/oneui.min.js') }}"></script> --}}
+        <script src="{{ asset('js/admin/custom-admin.js') }}"></script>
+        
 
         <!-- Session flash messaging -->
         @include('admin.snippets.insta-flash')
@@ -73,13 +84,13 @@
         <script type="text/javascript">
 
             // Pusher Initialization
-            var pusher = new Pusher('57ffd8dd7bd78657d42c', {
+            /*var pusher = new Pusher('57ffd8dd7bd78657d42c', {
                 encrypted: true
             });
             var channel = pusher.subscribe('file.uploaded');
             channel.bind('App\\Events\\FileWasUploaded', function(data) {
                 console.log(data);
-            });
+            });*/
         </script>
     </body>
 </html>

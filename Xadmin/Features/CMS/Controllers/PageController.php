@@ -19,7 +19,8 @@ class PageController extends Controller
      */
     public function index()
     {
-        return view('cms::post.pages');
+        $posts = Post::getPages()->paginate(10);
+        return view('cms::post.pages', compact('posts'));
     }
 
     /**

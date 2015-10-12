@@ -8,7 +8,22 @@ use Illuminate\Http\Request;
 class Post extends Model
 {
     protected $table = "posts";
-    protected $fillable = ['title', 'content', 'is_visible', 'published_at', 'slug', 'post_type', 'meta_keywords', 'meta_description'];
+    protected $fillable = ['title', 'content', 'feature_image', 'is_visible', 'published_at', 'slug', 'post_type', 'meta_keywords', 'meta_description'];
+
+
+    // Display posts with type 'post'
+    public static function getPosts(){
+        return Post::where('post_type', 'post')->where('is_visible', 1);
+    }
+
+    // Display posts with type 'pages'
+    public static function getPages(){
+        return Post::where('post_type', 'page')->where('is_visible', 1);
+    }
+
+    public function featureImage(){
+        if($this->feature_image) return asset( config('admin.fileUploadDirectory') . $this->feature_image);
+    }
 
     public static function savePost( Request $request, Post $post = null ){
         if(!$post){

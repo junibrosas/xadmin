@@ -3,7 +3,6 @@
     <div class="col-lg-12">
         <!-- DropzoneJS -->
         <!-- For more info and examples you can check out http://www.dropzonejs.com/#usage -->
-        <h2 class="content-heading">Upload Files</h2>
         <div class="block">
             <div class="block-content block-content-full">
                 <!-- DropzoneJS Container -->

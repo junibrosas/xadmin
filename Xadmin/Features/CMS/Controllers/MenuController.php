@@ -3,9 +3,9 @@
 namespace Xadmin\Features\CMS\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Xadmin\Features\CMS\Models\Menu;
 
 class MenuController extends Controller
 {
@@ -15,8 +15,13 @@ class MenuController extends Controller
      * @return Response
      */
     public function index()
-    {
-        return view('cms::menu.menu');
+    {       
+        $parentMenus = Menu::parents();
+        /*foreach($parentMenus as $menu){
+            _buildMenu( $menu->subMenus() );
+        }
+        return;*/
+        return view('cms::menu.menus', compact('parentMenus'));
     }
 
     /**

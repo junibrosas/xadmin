@@ -6,13 +6,11 @@
 	        <h3 class="block-title">Upload Files</h3>
 	    </div>
 	    <div class="block-content">
-			
 			@include('cms::snippets.ui-dropzone')
-
 	    </div>
 	</div>
-	@include('cms::snippets.block-files')
 
+	@include('cms::snippets.block-files-single')
 @stop
 
 @section('header')

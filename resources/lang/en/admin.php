@@ -32,6 +32,7 @@ return [
         'store' => 'Save Post',
         'blog_title' => 'Post Title',
         'blog_content' => 'Post Content'
+        
     ],
     
     'pages' => [
@@ -55,5 +56,12 @@ return [
 
     'tags' => [
         'title' => 'Tags'
+    ],
+
+    'image' => [
+        'feature' => 'Feature Image',
+    ],
+    'post-media' => [
+        'index' => 'Add Media Files'
     ]
 ];

@@ -29,7 +29,7 @@
                 </td>
                 <td class="text-right action-buttons">
                     <a href="{{ _postEditLink($post) }}" class="btn btn-success push-5-r push-10" type="button"><i class="fa fa-edit"></i></a>
-                    {!! Form::model($post, ['route' => ['admin.posts.destroy', $post->id], 'method' => 'DELETE', 'class' => 'delete-form']) !!}
+                    {!! Form::model($post, ['route' => ['admin.pages.destroy', $post->id], 'method' => 'DELETE', 'class' => 'delete-form']) !!}
                         <button type="submit" class="btn btn-danger push-5-r push-10" type="button"><i class="fa fa-trash-o"></i></button>
                     {!! Form::close() !!}
                 </td>

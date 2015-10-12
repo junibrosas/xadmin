@@ -15,6 +15,11 @@ use App\Events\FileWasUploaded;
 |
 */
 // Auth routes
+
+Route::get('/', function(){
+	return redirect()->route('admin.root');
+});
+
 Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function()
 {
     Route::get('/', ['as' => 'auth.root', 'uses' => 'AuthController@getLogin']);

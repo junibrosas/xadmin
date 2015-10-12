@@ -10,3 +10,21 @@
 	text-align: center;
 	padding-bottom: 30px;
 }
+
+table .post-link{
+	color: inherit;
+	font-weight: bold;
+}
+
+table .action-buttons .delete-form{
+	display: inline-block;
+}
+
+.image-placeholder{
+	width: 150px;
+	height: 150px;
+	background-color: #ccc;
+	border: 1px solid #C3B7B7;
+}
+.post-feature-image-container{ }
+.post-feature-image-container .btn { margin-top: 10px; }

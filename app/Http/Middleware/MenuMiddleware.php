@@ -35,9 +35,9 @@ class MenuMiddleware
                 ->icon('si si-puzzle', 'si')
                 ->prependIcon();
 
-            $menu = $menu->add( trans('admin.menu.index') , route('admin.menu.index') )
+            /*$menu = $menu->add( trans('admin.menu.index') , route('admin.menu.index') )
                 ->icon('si si-list', 'si')
-                ->prependIcon();
+                ->prependIcon();*/
         });
 
         return $next($request);

@@ -82,3 +82,16 @@ if ( ! function_exists('instaFlash')){
         $flash->info( $title, $message );
     }
 }
+
+if ( ! function_exists('_buildMenu')){
+    function _buildMenu( $menu ){
+        echo '<ol class="list-nested">';
+        foreach ($menu as $submenu) {
+            echo '<li>'.$submenu->name.'</li>';
+            if($submenu->hasChildren()){
+                _buildMenu($submenu->subMenus());
+            }
+        }
+        echo '</ol>';
+    }
+}

@@ -1,5 +1,9 @@
 @extends('admin.layouts.default')
 
+@section('header')
+	<link rel="stylesheet" type="text/css" href="{{ asset('js/plugins/jquery-bonsai/jquery.bonsai.css') }}">
+@stop
+
 @section('content')
 	<div class="row">
 		<div class="col-md-4">
@@ -23,26 +27,30 @@
 		</div>
 		<div class="col-md-8">
 			<div class="row">
-				<div class="col-md-6">
-					@include('cms::snippets.table-menu')
-				</div>
-				<div class="col-md-6">
-					@include('cms::snippets.table-menu')
-				</div>
-				<div class="col-md-6">
-					@include('cms::snippets.table-menu')
-				</div>
-				<div class="col-md-6">
-					@include('cms::snippets.table-menu')
-				</div>
-				<div class="col-md-6">
-					@include('cms::snippets.table-menu')
-				</div>
-				<div class="col-md-6">
-					@include('cms::snippets.table-menu')
-				</div>
+				@forelse($parentMenus as $menu)
+					<div class="col-md-6">
+						@include('cms::snippets.table-menu', ['menu' => $menu])
+					</div>
+				@empty
+					<div class="col-md-12">
+						<div class="text-center">
+							Create a new menu group. <a href="#" class="btn btn-primary">Create</a>
+						</div>
+					</div>
+				@endforelse
 			</div>
 		</div>
-
 	</div>
+@stop
+
+@section('footer')
+	<script src="{{ asset('js/plugins/jquery-bonsai/jquery.bonsai.js') }}"></script>
+	<script type="text/javascript">
+		$(function(){
+			/*$('#expList ol:first-child').bonsai({
+				expandAll: true,
+				handleDuplicateCheckboxes: true // optional
+			});*/
+		});
+	</script>
 @stop
