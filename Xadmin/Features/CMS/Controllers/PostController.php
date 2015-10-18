@@ -58,8 +58,6 @@ class PostController extends Controller
         $post = Post::getPosts()->where('id',$id)->first();
         if(!isset($post->id))
             $post = new Post();    
-        
-        $data['post'] = $post;
 
         return view('cms::post.post', compact('post'));
     }

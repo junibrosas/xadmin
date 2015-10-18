@@ -14,15 +14,19 @@ return [
     */
 
     'root' => 'Dashboard',
-
     'menu' 	=> [
         'index' => 'Menu'
-    ],
-    
+    ],    
     'files' => [
         'index' => 'Files'
     ],
-
+    'users'  => [
+        'index' => 'Users',
+        'add' => 'Add New User',
+        'create' => 'Create New User',
+        'register' => 'Register New User',
+        'edit' => 'Edit User'
+    ],
     'posts'  => [ 
         'all' => 'All Posts',  
         'index' => 'Posts', 
@@ -34,7 +38,6 @@ return [
         'blog_content' => 'Post Content'
         
     ],
-    
     'pages' => [
         'all' => 'All Pages',  
         'index' => 'Pages',

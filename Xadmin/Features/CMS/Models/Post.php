@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class Post extends Model
 {
     protected $table = "posts";
-    protected $fillable = ['title', 'content', 'feature_image', 'is_visible', 'published_at', 'slug', 'post_type', 'meta_keywords', 'meta_description'];
+    protected $fillable = ['user_id', 'title', 'content', 'feature_image', 'is_visible', 'published_at', 'slug', 'post_type', 'meta_keywords', 'meta_description'];
 
 
     // Display posts with type 'post'

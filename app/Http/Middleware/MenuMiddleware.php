@@ -35,6 +35,10 @@ class MenuMiddleware
                 ->icon('si si-puzzle', 'si')
                 ->prependIcon();
 
+            $files = $menu->add( trans('admin.users.index') , route('admin.users.index') )
+                ->icon('si si-user', 'si')
+                ->prependIcon();
+
             /*$menu = $menu->add( trans('admin.menu.index') , route('admin.menu.index') )
                 ->icon('si si-list', 'si')
                 ->prependIcon();*/
