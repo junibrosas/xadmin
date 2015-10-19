@@ -5,7 +5,7 @@
         <li>
             <div class="btn-group">
                 <button class="btn btn-default btn-image dropdown-toggle" data-toggle="dropdown" type="button" aria-expanded="true">
-                    <img src="{{ asset('img/avatars/avatar10.jpg') }}" alt="Avatar">
+                    <img src="{{ asset('xadmin/img/avatars/avatar10.jpg') }}" alt="Avatar">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right">

@@ -22,10 +22,11 @@ Route::get('/', function(){
 
 Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function()
 {
+  	// Authentication
     Route::get('/', ['as' => 'auth.root', 'uses' => 'AuthController@getLogin']);
     Route::get('login',  ['as' => 'auth.login', 'uses' => 'AuthController@getLogin']);
     Route::post('login', ['as' => 'auth.login', 'uses' => 'AuthController@postLogin']);
-    Route::get('logout', ['as' => 'auth.logout', 'uses' => 'AuthController@getLogout']);
+    Route::get('logout', ['as' => 'auth.logout', 'uses' => 'AuthController@getLogout']);  
 });
 
 get('file-upload', function(){
