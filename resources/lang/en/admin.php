@@ -32,10 +32,10 @@ return [
         'index' => 'Posts', 
         'create' => 'Create Post',
         'add' => 'Add New Post',
-        'edit' => 'Edit Blog Post',
-        'store' => 'Save Post',
-        'blog_title' => 'Post Title',
-        'blog_content' => 'Post Content'
+        'edit' => 'Edit Post',
+        'store' => 'Save',
+        'blog_title' => 'Title',
+        'blog_content' => 'Content'
         
     ],
     'pages' => [
@@ -44,9 +44,9 @@ return [
         'create' => 'Create Page',
         'add' => 'Add New Page',
         'edit' => 'Edit Page',
-        'store' => 'Save Page',
-        'blog_title' => 'Page Title',
-        'blog_content' => 'Page Content'
+        'store' => 'Save',
+        'blog_title' => 'Title',
+        'blog_content' => 'Content'
     ],
 
     'auth' => [
