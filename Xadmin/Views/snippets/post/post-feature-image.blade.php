@@ -3,14 +3,14 @@
     <div class="block-header bg-gray-lighter">
          <ul class="block-options">
             <li>
-                <a href="{{ route('admin.post-media.index', ['post'=>$post->id]) }}"><i class="fa fa-plus"></i> Select Images</a>
+                <a href="{{ route('admin.post-media.index', ['post'=>$post->id]) }}"><i class="fa fa-plus"></i> Select Image</a>
             </li>
         </ul>
         <h3 class="block-title">{{ trans('admin.image.feature') }}</h3>
     </div>
     <div class="block-content" style="padding-bottom: 20px;">
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-12">
                 @if($post->featureImage())
                     <div class="post-feature-image-container">
                         <img src="{{ $post->featureImage() }}" alt="{{ $post->title }}" class="post-feature-image img-responsive">

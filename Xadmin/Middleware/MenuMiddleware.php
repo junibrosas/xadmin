@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace Xadmin\Middleware;
 
 use Closure;
 use Menu;
@@ -39,9 +39,7 @@ class MenuMiddleware
                 ->icon('si si-user', 'si')
                 ->prependIcon();
 
-            /*$menu = $menu->add( trans('admin.menu.index') , route('admin.menu.index') )
-                ->icon('si si-list', 'si')
-                ->prependIcon();*/
+            
         });
 
         return $next($request);

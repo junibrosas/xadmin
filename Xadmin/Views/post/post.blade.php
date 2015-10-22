@@ -19,24 +19,35 @@
 
         <div class="row">
 
-            <div class="col-lg-12">
+            <div class="col-lg-8">
                
-                @include('cms::snippets.post-title-content')
+                @include('cms::snippets.post.post-title-content')
+
+                @include('cms::snippets.post.post-property')
+
+                
+
+                @include('cms::snippets.post.post-geocomplete')
                 
             </div>
-            <div class="col-lg-12">
-                @include('cms::snippets.post-tags')
+            <div class="col-lg-4">
+                @include('cms::snippets.post.post-category')
 
-                @include('cms::snippets.post-settings')
+                @include('cms::snippets.post.post-tags')
 
                 @if($post->id)
-                    @include('cms::snippets.post-feature-image')    
+                    @include('cms::snippets.post.post-feature-image')    
                 @endif
+
+                @include('cms::snippets.post.post-settings')
+
+                <div class="text-right page-block-btns"> 
+                    <button type="submit" class="btn btn-primary btn-square"><i class="fa fa-floppy-o"></i> {{ trans('admin.posts.store') }}</button>
+                </div>
+
             </div>
         </div>
-        <div class="text-right page-block-btns"> 
-            <button type="submit" class="btn btn-primary btn-square"><i class="fa fa-floppy-o"></i> {{ trans('admin.posts.store') }}</button>
-        </div>
+        
     </form>
 @stop
 
@@ -50,13 +61,43 @@
 @stop
 
 @section('footer')
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
     <script src="{{ asset('xadmin/js/plugins/summernote/summernote.min.js') }}"></script>
     <script src="{{ asset('xadmin/js/plugins/select2/select2.full.min.js') }}"></script>
     <script src="{{ asset('xadmin/js/plugins/jquery-tags-input/jquery.tagsinput.min.js') }}"></script>
     <script src="{{ asset('xadmin/js/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('xadmin/js/plugins/masked-inputs/jquery.maskedinput.min.js') }}"></script>
-
-
+    <script src="{{ asset('xadmin/js/plugins/geocomplete/jquery.geocomplete.js') }}"></script>
+    <script src="{{ asset('xadmin/js/plugins/geocomplete/logger.js') }}"></script>
+    <script>
+      $(function(){
+        
+        var options = {
+          map: ".map_canvas"
+        };
+        
+        $("#geocomplete").geocomplete(options)
+          .bind("geocode:result", function(event, result){
+            $.log("Result: " + result.formatted_address);
+          })
+          .bind("geocode:error", function(event, status){
+            $.log("ERROR: " + status);
+          })
+          .bind("geocode:multiple", function(event, results){
+            $.log("Multiple: " + results.length + " results found");
+          });
+        
+        $("#find").click(function(){
+          $("#geocomplete").trigger("geocode");
+        });
+        
+        $("#examples a").click(function(){
+          $("#geocomplete").val($(this).text()).trigger("geocode");
+          return false;
+        });
+        
+      });
+    </script>
     <!-- Page JS Code -->
     <script>
         $(function () {

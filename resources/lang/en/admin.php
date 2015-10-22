@@ -35,8 +35,7 @@ return [
         'edit' => 'Edit Post',
         'store' => 'Save',
         'blog_title' => 'Title',
-        'blog_content' => 'Content'
-        
+        'blog_content' => 'Content'       
     ],
     'pages' => [
         'all' => 'All Pages',  
@@ -66,5 +65,16 @@ return [
     ],
     'post-media' => [
         'index' => 'Add Media Files'
-    ]
+    ],
+    'post_category' => 'Post Category',
+    'properties' => 'Properties',
+    'geocomplete_title' => 'Location Search',
+    'property_details' => 'Property Details',
+    'property_area' => 'Area (m2)',
+    'property_address' => 'Address',
+    'property_price' => 'Price',
+    'property_type' => 'Type',
+    'property_status' => 'Status',
+    'property_country' => 'Country',
+    'property_location' => 'Location'
 ];

@@ -3,7 +3,7 @@
 Route::group(['prefix' => 'admin', 'middleware' => 'admin-auth', 'namespace' => 'Xadmin\Controllers'], function()
 {
 	Route::get('/', ['as' => 'admin.root', 'uses' => 'DashboardController@index']); // 'root' is route name used to make the application index url separate from the rest of the pages and routes.
-	Route::resource('pages', 'PageController');
+    Route::resource('pages', 'PageController');
     Route::resource('posts', 'PostController');
     Route::resource('files', 'FileController');
     Route::resource('menu', 'MenuController');
