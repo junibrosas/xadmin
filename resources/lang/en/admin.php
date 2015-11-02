@@ -66,7 +66,7 @@ return [
     'post-media' => [
         'index' => 'Add Media Files'
     ],
-    'post_category' => 'Post Category',
+    'post_category' => 'Category',
     'properties' => 'Properties',
     'geocomplete_title' => 'Location Search',
     'property_details' => 'Property Details',

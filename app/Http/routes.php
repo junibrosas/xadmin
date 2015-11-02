@@ -17,6 +17,7 @@ use App\Events\FileWasUploaded;
 // Auth routes
 
 Route::get('/', function(){
+	return "what?";
 	return redirect()->route('admin.root');
 });
 

@@ -18,9 +18,11 @@ class TagController extends Controller
     {  
         $tag = Tag::find($request->get('tag'));
 
+        $tags = Tag::paginate(10);
+
         if(!$tag) $tag = new Tag();
 
-        return view('cms::tag.tags', compact('tag'));
+        return view('cms::tag.tags', compact('tag', 'tags'));
     }
 
     /**
@@ -43,7 +45,7 @@ class TagController extends Controller
     {
         $tag = Tag::saveTag( $request );
 
-        return redirect()->route('admin.tags.index', ['tag' => $tag->id]);
+        return redirect()->route('admin.tags.index');
     }
 
     /**
@@ -90,6 +92,12 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tag = Tag::where('id',$id)->first();
+
+        if ($tag && $tag->delete()) {
+            return redirect()->back()->with('message', 'Deleted Successfully.' );
+        }
+
+        return redirect()->back()->with('message', 'Unable to delete.' );
     }
 }

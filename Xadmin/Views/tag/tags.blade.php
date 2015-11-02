@@ -23,6 +23,8 @@
 				    
 				    @include('cms::snippets.table-tags')
 
+				    {!! $tags->render() !!}
+
 			    </div>
 			</div>
 		</div>	

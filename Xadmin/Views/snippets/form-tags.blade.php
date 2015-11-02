@@ -40,27 +40,27 @@
     <div class="form-group">
         <label class="col-xs-12" for="example-select">Type</label>
         <div class="col-sm-12">
-            <select class="form-control" name="type" size="1">
-                <option value="0">Please select</option>
-                <option value="category">Category</option>
-                <option value="tag">Tag</option>
-            </select>
+            <?php $tagTypes = _dataTagTypes(); $tagTypes[0] = 'Please select'; $tagTypes = array_reverse($tagTypes); $tagType = $tag->type ? $tag->type : 0 ?>
+            
+            {!! Form::select('type', $tagTypes ,$tagType, ['class' => 'form-control', 'size' => 1] ) !!}
+
             <em>Choose a specific type of tag, either it could be a category or a normal tag.</em>
         </div>
     </div>
     {{-- Parent --}}
-    <div class="form-group">
-        <label class="col-xs-12" for="example-select">Parent</label>
-        <div class="col-sm-12">
-            <select class="form-control" name="parent" size="1">
-                <option value="0">Please select</option>
-                <option value="1">Option #1</option>
-                <option value="2">Option #2</option>
-                <option value="3">Option #3</option>
-            </select>
-            <em>Categories, unlike tags, can have a hierarchy. You might have a Jazz category, and under that have children categories for Bebop and Big Band. Totally optional.</em>
+    @if( !$tag->id || $tag->type == 'category')
+        <div class="form-group">
+            <label class="col-xs-12" for="example-select">Parent</label>
+            <div class="col-sm-12">
+                <?php 
+                $tag->parent = $tag->parent ? $tag->parent : 0;  ?>
+
+                {!! Form::select('parent', _categoryList( $tags ), $tag->parent, ['class' => 'form-control', 'size' => 1] ) !!}
+
+                <em>Categories, unlike tags, can have a hierarchy. You might have a Jazz category, and under that have children categories for Bebop and Big Band. Totally optional.</em>
+            </div>
         </div>
-    </div>
+    @endif
     {{-- Submit Button --}}
 	<div class="form-group">
 		<div class="col-sm-12">

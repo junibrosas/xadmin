@@ -28,7 +28,7 @@ class Tag extends Model
 		$tag->slug = $request->get('slug') ? $request->get('slug') : str_slug( $request->get('name') );
 		$tag->type = $request->get('type');
 		$tag->description = $request->get('description');
-		$tag->parent = $request->get('parent');
+		$tag->parent = $request->get('parent') ? $request->get('parent') : 0;
 		$tag->count = $request->get('count') ? $request->get('count') : 0 ;
 		$tag->save();
 
