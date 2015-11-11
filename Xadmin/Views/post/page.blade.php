@@ -8,8 +8,11 @@
     @else 
         <form class="form-horizontal push-10-t" action="{{ route('admin.pages.store') }}" method="POST">
     @endif
-    
         {!! csrf_field() !!}
+        
+        {{-- Define the Post Type --}}        
+        <input name="post_type" type="hidden" value="page">
+
         <div class="pull-left page-block-btns"> 
             <a href="{{ route('admin.pages.index') }}" class="btn btn-primary btn-square"><i class="fa fa-list"></i> {{ trans('admin.pages.all') }}</a>
         </div>

@@ -90,7 +90,7 @@ if ( ! function_exists('_postStatus'))
 {
     function _postStatus($status_id)
     {
-		return $GLOBALS['statuses'][ $status_id ];
+        return $GLOBALS['statuses'][ $status_id ];
     }
 }
 
@@ -106,6 +106,9 @@ if ( ! function_exists('_postMeta'))
         // iterate each item and match it to the value.
         if(is_array($key)){
             $meta = PostMeta::where('post_id', $postId)->where('meta_key', $key['meta_key'])->first();
+            
+            if(!$meta) return;
+
             $metaValueJsonDecode = json_decode($meta->meta_value);
             if(count($metaValueJsonDecode) > 0){
                 foreach($metaValueJsonDecode as $itemKey => $itemValue){
@@ -138,4 +141,11 @@ if ( ! function_exists('_postExcerpt')){
         return substr($post->content, 0, $limit);
     }
 }
-
+if ( ! function_exists('_postCategories'))
+{
+     // Get List of PostTags objects from a specific post.
+    function _postCategories( Post $post )
+    {
+        return PostTag::where('post_id', $post->id)->where('type', 'category')->get();
+    }
+}

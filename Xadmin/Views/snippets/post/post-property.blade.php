@@ -33,7 +33,8 @@
         <div class="form-group">
             <label class="col-xs-12" for="example-select">{{ trans('admin.property_status') }}</label>
             <div class="col-sm-12">
-                <?php $propertyStatuses = _propertyStatuses();
+                <?php 
+                    $propertyStatuses = _propertyStatuses();
                     $propertyStatuses[0] = 'Please Select';
                     $propertyStatuses = array_reverse($propertyStatuses);
                     $propertyStatus = _postMeta($post->id, 'property_status') ? _postMeta($post->id, 'property_status') : 0;
@@ -42,13 +43,27 @@
 
             </div>
         </div>
+        
         {{-- Country --}}
         <div class="form-group">
             <label class="col-xs-12" for="example-select">{{ trans('admin.property_country') }}</label>
             <div class="col-sm-12">
+                <?php 
+                    $countries = _dataCountries();
+                ?>
+                {!! Form::select('meta[country]', $countries, _postMeta($post->id, 'country'), ['class' => 'form-control', 'size' => 1, 'id' => 'country'] ) !!}
 
-                {!! Form::select('meta[country]', ['Option #1', 'Option #2', 'Option #3'], _postMeta($post->id, 'country'), ['class' => 'form-control', 'size' => 1] ) !!}
+            </div>
+        </div>
 
+        {{-- Location --}}
+        <div class="form-group">
+            <label class="col-xs-12" for="example-select">{{ trans('admin.property_location') }}</label>
+            <div class="col-sm-12">
+                <?php 
+                    $cities = _dataCities(_dataCountriesAndLocation()[0]['name']);
+                ?>
+                {!! Form::select('meta[location]', $cities, null, ['class' => 'form-control', 'size' => 1, 'id' => 'location', 'data-selected-location' => _postMeta($post->id, 'location')] ) !!}
             </div>
         </div>
 
@@ -68,4 +83,6 @@
 
     </div>
 </div>
-<!-- Property Details End
+<!-- Property Details End -->
+
+@include('cms::snippets.script-country-location')

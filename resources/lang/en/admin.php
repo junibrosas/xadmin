@@ -14,7 +14,7 @@ return [
     */
 
     'root' => 'Dashboard',
-    'menu' 	=> [
+    'menu'  => [
         'index' => 'Menu'
     ],    
     'files' => [
@@ -48,7 +48,7 @@ return [
         'blog_content' => 'Content'
     ],
     'auth' => [
-        'login' => 'Login'
+        'login' => 'Login',
     ],
     'categories' => [
         'title' => 'Categories'
@@ -56,7 +56,7 @@ return [
     'tags' => [
         'index' => 'Tags',
         'title' => 'Tags',
-        'add' => 'Add New Tag',
+        'save' => 'Save Tag',
         'add-block' => 'Add New Category/Tag',
         'list' => 'List of Categories/Tags'
     ],
@@ -66,7 +66,7 @@ return [
     'post-media' => [
         'index' => 'Add Media Files'
     ],
-    'post_category' => 'Category',
+    'post_category' => 'Post Category',
     'properties' => 'Properties',
     'geocomplete_title' => 'Location Search',
     'property_details' => 'Property Details',
