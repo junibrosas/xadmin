@@ -10,7 +10,7 @@
         "caffeinated/menus": "~2.0", 
         "laravelcollective/html": "5.1.*",
         "intervention/image": "^2.3",
-        "pusher/pusher-php-server": "^2.2"
+        "talyssonoc/react-laravel": "0.10.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

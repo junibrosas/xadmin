@@ -16,7 +16,7 @@ class CreateFilemediaTable extends Migration
             $table->increments('id');
             $table->string('filename');
             $table->string('mime_type');
-            $table->int('size');
+            $table->integer('size');
 
             $table->timestamps();
             $table->softDeletes();
@@ -30,6 +30,6 @@ class CreateFilemediaTable extends Migration
      */
     public function down()
     {
-        Scheme::drop('filemedia');
+        Schema::drop('filemedia');
     }
 }
