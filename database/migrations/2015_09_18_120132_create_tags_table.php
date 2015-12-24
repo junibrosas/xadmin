@@ -18,7 +18,8 @@ class CreateTagsTable extends Migration
             $table->string('slug');
             $table->string('type')->nullable();
             $table->string('description', 500);
-            $table->integer('parent');
+            $table->integer('parent_id');
+            $table->integer('order');
             $table->integer('count');
             $table->softDeletes();
             $table->timestamps();
